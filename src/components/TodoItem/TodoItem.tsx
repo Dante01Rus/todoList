@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { mainApi } from "../../api";
+import {deleteTodoItem} from "../helpers/removeTodos";
 
 import type { TodoType } from "../../types/types";
 
@@ -16,16 +16,6 @@ export function TodoItem({ todo, deleteTodo }: TodoItemTypes): JSX.Element {
   const modalShowHandler = useCallback(() => {
     setModalVisible(prev => !prev);
   }, [setModalVisible]);
-
-  const deleteTodoItem = async (todoId: number) => {
-    try {
-      fetch(`${mainApi}/posts/${todoId}`, {
-        method: 'DELETE',
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   const DeleteItem = useCallback(() => {
     deleteTodo(todo.id);

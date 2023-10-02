@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
-import "./UserList.css"
+import "./UserList.css";
+import { UserType } from "../../types/types";
 
-export function UserList({userList}) {
+type UserListType = {
+  userList: UserType[];
+}
+
+export function UserList({ userList }: UserListType) {
   return (
     <ul className="user-list">
-      {userList.map((user) => (
+      {userList.map((user: UserType) => (
         <li className="user-item" key={user.id}>
           <Link to={`/user/${user.id}`} >
             {user.name} aka {user.username}

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { usersApi } from "./api";
 import "./styles.css";
 import { UserList } from "./components/UserList/UserList";
+import { UserType } from "./types/types";
 
 export default function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<UserType[]>();
   useEffect(() => {
     fetchData().then((data) => {
       setData(data);

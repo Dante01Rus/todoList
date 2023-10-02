@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { usersApi } from "../api";
 import {TodoList} from "../components/TodoList/TodoList";
+import { TodoType, UserType } from "../types/types";
 
 function User() {
-  const [user, setUser] = useState();
-  const [todos, setTodos] = useState();
+  const [user, setUser] = useState<UserType>();
+  const [todos, setTodos] = useState<TodoType[]>([]);
   const { id } = useParams();
   useEffect(() => {
     const fetchUser = async () => {

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import "./UserList.css";
+
 import { UserType } from "../../types/types";
+
+import "./UserList.css";
 
 type UserListType = {
   userList: UserType[];

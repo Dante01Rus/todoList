@@ -1,7 +1,10 @@
-import "./TodoList.css";
-import { TodoType } from "../../types/types";
 import { useState } from "react";
+
+import { TodoType } from "../../types/types";
+
 import { TodoItem } from "../TodoItem/TodoItem";
+
+import "./TodoList.css";
 
 type TodoListType = {
   todos: TodoType[];
@@ -15,9 +18,13 @@ export function TodoList({ todos }: TodoListType): JSX.Element {
     setTodoList(todoList.filter((todo: TodoType) => todo.id !== todoId));
   }
 
+  if (!todoList) {
+    return <h2>No items in TodoList</h2>;
+  }
+
   return (
     <>
-      {todoList && (
+      {(
         <ul className="todo-list">
           <h3>TODOS</h3>
           {todoList.map((todo: TodoType) => (

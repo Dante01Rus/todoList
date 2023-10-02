@@ -1,7 +1,8 @@
 import { useCallback, useState } from "react";
 
 import { mainApi } from "../../api";
-import { TodoType } from "../../types/types";
+
+import type { TodoType } from "../../types/types";
 
 type TodoItemTypes = {
   todo: TodoType;
@@ -13,8 +14,8 @@ export function TodoItem({ todo, deleteTodo }: TodoItemTypes): JSX.Element {
   const [modalVisible, setModalVisible] = useState(false);
 
   const modalShowHandler = useCallback(() => {
-    setModalVisible(!modalVisible);
-  }, [modalVisible]);
+    setModalVisible(prev => !prev);
+  }, [setModalVisible]);
 
   const deleteTodoItem = async (todoId: number) => {
     try {
@@ -30,7 +31,7 @@ export function TodoItem({ todo, deleteTodo }: TodoItemTypes): JSX.Element {
     deleteTodo(todo.id);
     deleteTodoItem(todo.id);
     modalShowHandler();
-  }, [modalVisible])
+  }, [deleteTodo, deleteTodoItem, modalShowHandler])
 
 
 

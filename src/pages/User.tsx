@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
 import { usersApi } from "../api";
+
 import {TodoList} from "../components/TodoList/TodoList";
-import { TodoType, UserType } from "../types/types";
+
+import type { TodoType, UserType } from "../types/types";
 
 function User() {
   const [user, setUser] = useState<UserType>();

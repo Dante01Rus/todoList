@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import "./UserList.css";
+
 import { UserType } from "../../types/types";
+
+import "./UserList.css";
 
 type UserListType = {
   userList: UserType[];
 }
 
-export function UserList({ userList }: UserListType) {
+export function UserList({ userList }: UserListType): JSX.Element {
   return (
     <ul className="user-list">
       {userList.map((user: UserType) => (

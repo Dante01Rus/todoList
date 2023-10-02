@@ -1,23 +1,34 @@
+import { useCallback, useState } from "react";
+
+import { TodoItem } from "../TodoItem/TodoItem";
+
 import "./TodoList.css";
-import { TodoType } from "../../types/types";
+
+import type { TodoType } from "../../types/types";
 
 type TodoListType = {
   todos: TodoType[];
 }
 
-export function TodoList({todos}: TodoListType) {
+export function TodoList({ todos }: TodoListType): JSX.Element {
+
+  const [todoList, setTodoList] = useState(todos);
+
+  const deleteTodoItem = useCallback((todoId: number) => {
+    setTodoList(todoList.filter((todo: TodoType) => todo.id !== todoId));
+  }, [setTodoList, todoList])
+
+  if (!todoList) {
+    return <h2>No items in TodoList</h2>;
+  }
+
   return (
     <>
-      {todos && (
+      {(
         <ul className="todo-list">
           <h3>TODOS</h3>
-          {todos.map((todo: TodoType) => (
-            <li className="todo-item">
-              <label>
-                <input type="checkbox" checked={todo.completed} />
-                {todo.title}
-              </label>
-            </li>
+          {todoList.map((todo: TodoType) => (
+            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodoItem} />
           ))}
         </ul>
       )}

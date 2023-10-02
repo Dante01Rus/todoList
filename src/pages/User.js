@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { usersApi } from "../api";
+import {TodoList} from "../components/TodoList/TodoList";
 
 function User() {
   const [user, setUser] = useState();
@@ -26,6 +27,7 @@ function User() {
     fetchUser();
     fetchTodos();
   }, [id]);
+
   if (!user) {
     return <h2>No data</h2>;
   }
@@ -40,19 +42,7 @@ function User() {
       <main>
         <p>{user.email}</p>
         <p>{user.phone}</p>
-        {todos && (
-          <ul>
-            <h3>TODOS</h3>
-            {todos.map((todo) => (
-              <li>
-                <label>
-                  <input type="checkbox" checked={todo.completed} />
-                  {todo.title}
-                </label>
-              </li>
-            ))}
-          </ul>
-        )}
+        <TodoList todos={todos} />
       </main>
     </>
   );

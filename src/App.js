@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { usersApi } from "./api";
 import "./styles.css";
+import { UserList } from "./components/UserList/UserList";
 
 export default function App() {
   const [data, setData] = useState();
@@ -18,11 +18,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Testing todos</h1>
-      {data.map((element) => (
-        <Link to={`/user/${element.id}`} key={element.id}>
-          {element.name} aka {element.username}
-        </Link>
-      ))}
+      <UserList userList={data} />
     </div>
   );
 }

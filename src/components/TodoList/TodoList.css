@@ -1,0 +1,10 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item {
+    padding: 15px;
+    border: 1px solid aquamarine;
+}

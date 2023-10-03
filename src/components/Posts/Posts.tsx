@@ -7,6 +7,15 @@ import "./Posts.css";
 import { PostsType } from "../../types/types";
 import { Link } from "react-router-dom";
 
+async function fetchPosts() {
+  try {
+    const response = await fetch(postsApi);
+    return await response.json();
+  } catch (error) {
+    console.log("error is:", error)
+  }
+}
+
 export const Posts = () => {
 
   const [posts, setPosts] = useState<PostsType[]>();
@@ -19,15 +28,6 @@ export const Posts = () => {
 
   if (!posts || posts.length === 0) {
     return <h2>No posts</h2>;
-  }
-
-  async function fetchPosts() {
-    try {
-      const response = await fetch(postsApi);
-      return await response.json();
-    } catch (error) {
-      console.log("error is:", error)
-    }
   }
 
   return (

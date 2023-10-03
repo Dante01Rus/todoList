@@ -35,8 +35,7 @@ export function TodoItem({ todo, deleteTodo }: TodoItemTypes): JSX.Element {
       {
         modalVisible && <div className="todo-modal">
           <div className="todo-modal-wrapper">
-            <button onClick={DeleteItem}
-              className="todo-approve"
+            <button onClick={DeleteItem} className="todo-approve"
             >Yes</button>
             <button onClick={modalShowHandler} className="todo-cancel">No</button>
           </div>

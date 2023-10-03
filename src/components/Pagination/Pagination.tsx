@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './Pagination.css'
 
 type PaginationTypes = {
@@ -6,14 +7,24 @@ type PaginationTypes = {
   changePage: (page: number) => void;
 }
 
-export const Pagination = ({ totalCount, limit, changePage}: PaginationTypes): JSX.Element => {
+export const Pagination = ({ totalCount, limit, changePage }: PaginationTypes): JSX.Element => {
 
-  const paginationLength = Math.ceil(Number(totalCount) / limit);
-  const paginationArray = [];
+  const [paginationLength, setPaginationLength] = useState<number>(Math.ceil(Number(totalCount) / limit));
+  const [paginationArray, setPaginationArray] = useState<number[]>([]);
 
-  for(let i = 0; i < paginationLength; ++i) {
-    paginationArray.push(i + 1);
-  }
+
+  useEffect(() => {
+    setPaginationArray(() => {
+      let arr = [];
+      for (let i = 0; i < paginationLength; ++i) {
+        arr.push(i + 1);
+      }
+
+      return arr;
+    })
+
+  }, [totalCount, limit])
+
 
   return (
     <ul className="pagination">

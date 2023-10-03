@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { usersApi } from "./api";
 import { UserType } from "./types/types";
@@ -8,7 +9,9 @@ import { UserList } from "./components/UserList/UserList";
 import "./styles.css";
 
 export default function App() {
+
   const [data, setData] = useState<UserType[]>();
+
   useEffect(() => {
     fetchData().then((data) => {
       setData(data);
@@ -22,6 +25,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Testing todos</h1>
+      <Link to={"/posts"}>Test Posts</Link>
       <UserList userList={data} />
     </div>
   );

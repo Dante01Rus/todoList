@@ -1,0 +1,10 @@
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comments-item {
+  padding: 15px;
+  border: 1px solid aquamarine;
+}

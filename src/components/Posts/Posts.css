@@ -1,0 +1,15 @@
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.posts-link {
+  text-decoration: none;
+  color: black;
+}
+
+.posts-item {
+  padding: 15px;
+  border: 1px solid aquamarine;
+}
